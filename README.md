@@ -56,8 +56,7 @@ then edit line "export PATH=$PATH" to "PATH=/home/gsong/AGAPE/programs/abyss-1.5
 sequences)
 
 5. MAKER
-  1) maker_exe.ctl
-  - edit the path of all executable programs that ar required for running MAKER
+  - maker_exe.ctl: edit the path of all executable programs that ar required for running MAKER
 
 6. LASTZ (included in the pipeline)
 
