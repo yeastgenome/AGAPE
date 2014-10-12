@@ -5,8 +5,9 @@ AGAPE (Automated Genome Analysis PipelinE) for yeast pan-genome analysis is desi
 
 -- INSTALLATION --
 
-Prerequisite programs that need to get installed
+Go to the main directory of the AGAPE package and type "cd src" and "make".
 
+Install prerequisite programs as follows
 (A) Assembly
 
 1. ABYSS (http://www.bcgsc.ca/platform/bioinfo/software/abyss)
