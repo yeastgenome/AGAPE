@@ -1,0 +1,29 @@
+#!/bin/sh
+
+AGAPE_DIR=/srv/gs1/projects/cherry/giltae/AGAPE
+REF_NAME=yeast
+CFG_DIR=$AGAPE_DIR/cfg_files
+PROTEIN1=$CFG_DIR/yeast_protein.fasta # reference proteins in FASTA
+EST1=$CFG_DIR/yeast_est.fasta # reference EST in FASTA
+PROTEIN2=$CFG_DIR/fungi_protein.fasta # larger set of proteins in FASTA 
+EST2=$CFG_DIR/fungi_est.fasta # larger set of EST in FASTA
+REPEAT_PROTEIN=$CFG_DIR/te_proteins.fasta # larger set of EST in FASTA
+
+REF_DIR=$AGAPE_DIR/reference
+REF_FASTA=$REF_DIR/$REF_NAME.fasta
+REF_GFF=$REF_DIR/$REF_NAME.gff
+
+ABYSS=/srv/gs1/projects/cherry/apps/abyss/bin
+SGA=$AGAPE_DIR/programs/SGA/bin
+SGA_src=$AGAPE_DIR/programs/SGA/sga-master/src/bin
+BLAST=$AGAPE_DIR/programs/BLAST/bin
+axtChainNet=$AGAPE_DIR/programs/axtChainNet
+AUGUSTUS=$AGAPE_DIR/programs/augustus/augustus.2.5/bin
+AUGUSTUS_REF=saccharomyces # check SPECIES.list
+MAKER=/srv/gs1/projects/cherry/apps/maker/bin
+SNAP=/srv/gs1/projects/cherry/apps/SNAP/snap
+GeneMark=/srv/gs1/projects/cherry/apps/GeneMark_S/genemark_suite_linux_64/gmsuite/gmsn.pl
+genemark_mod=/srv/gs1/projects/cherry/giltae/strains/GeneMark_model/GeneMark_hmm.mod 
+
+
+BIN=$AGAPE_DIR/bin

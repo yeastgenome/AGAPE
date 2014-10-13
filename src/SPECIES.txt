@@ -1,0 +1,65 @@
+#SPECIES list for AUGUSTUS
+
+identifier                               | species
+-----------------------------------------|----------------------
+human                                    | Homo sapiens
+fly                                      | Drosophila melanogaster
+arabidopsis                              | Arabidopsis thaliana
+brugia                                   | Brugia malayi
+aedes                                    | Aedes aegypti
+tribolium                                | Tribolium castaneum
+schistosoma                              | Schistosoma mansoni
+tetrahymena                              | Tetrahymena thermophila
+galdieria                                | Galdieria sulphuraria
+maize                                    | Zea mays
+toxoplasma                               | Toxoplasma gondii
+caenorhabditis                           | Caenorhabditis elegans
+(elegans)                                | Caenorhabditis elegans
+aspergillus_fumigatus                    | Aspergillus fumigatus
+aspergillus_nidulans                     | Aspergillus nidulans
+(anidulans)                              | Aspergillus nidulans
+aspergillus_oryzae                       | Aspergillus oryzae
+aspergillus_terreus                      | Aspergillus terreus
+botrytis_cinerea                         | Botrytis cinerea
+candida_albicans                         | Candida albicans
+candida_guilliermondii                   | Candida guilliermondii
+candida_tropicalis                       | Candida tropicalis
+chaetomium_globosum                      | Chaetomium globosum
+coccidioides_immitis                     | Coccidioides immitis
+coprinus                                 | Coprinus cinereus
+coprinus_cinereus                        | Coprinus cinereus
+cryptococcus_neoformans_gattii           | Cryptococcus neoformans gattii
+cryptococcus_neoformans_neoformans_B     | Cryptococcus neoformans neoformans
+cryptococcus_neoformans_neoformans_JEC21 | Cryptococcus neoformans neoformans
+(cryptococcus)                           | Cryptococcus neoformans
+debaryomyces_hansenii                    | Debaryomyces hansenii
+encephalitozoon_cuniculi_GB              | Encephalitozoon cuniculi
+eremothecium_gossypii                    | Eremothecium gossypii
+fusarium_graminearum                     | Fusarium graminearum
+(fusarium)                               | Fusarium graminearium
+histoplasma_capsulatum                   | Histoplasma capsulatum
+(histoplasma)                            | Histoplasma capsulatum
+kluyveromyces_lactis                     | Kluyveromyces lactis
+laccaria_bicolor                         | Laccaria bicolor
+lamprey                                  | Petromyzon marinus
+leishmania_tarentolae                    | Leishmania tarentolae
+lodderomyces_elongisporus                | Lodderomyces elongisporus
+magnaporthe_grisea                       | Magnaporthe grisea
+neurospora_crassa                        | Neurospora crassa
+(neurospora)                             | Neurospora crassa
+phanerochaete_chrysosporium              | Phanerochaete chrysosporium
+(pchrysosporium)                         | Phanerochaete chrysosporium
+pichia_stipitis                          | Pichia stipitis
+rhizopus_oryzae                          | Rhizopus oryzae
+saccharomyces_cerevisiae_S288C           | Saccharomyces cerevisiae
+saccharomyces_cerevisiae_rm11-1a_1       | Saccharomyces cerevisiae
+(saccharomyces)                          | Saccharomyces cerevisiae
+schizosaccharomyces_pombe                | Schizosaccharomyces pombe
+trichinella                              | Trichinella spiralis
+ustilago_maydis                          | Ustilago maydis
+(ustilago)                               | Ustilago maydis
+yarrowia_lipolytica                      | Yarrowia lipolytica
+nasonia                                  | Nasonia vitripennis
+tomato                                   | Solanum lycopersicum
+chlamydomonas                            | Chlamydomonas reinhardtii
+amphimedon                               | Amphimedon queenslandica
