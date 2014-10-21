@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 		len_cutoff_ratio = atof(argv[5]);
 	}
 	else if ( argc != 5) {
-		fatal("gff_subset gff_annotation scaf_name b ei (ratio)\n");
+		fatal("gff_subset gff_annotation scaf_name b e (ratio)\n");
 	}
 	
 	if((f = ckopen(argv[1], "r")) == NULL )

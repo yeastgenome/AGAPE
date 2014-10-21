@@ -7,7 +7,7 @@
 # locations, and then run "make install".
 #
 INSTALL = install
-TARGETS = build_utils
+TARGETS = build_lastz build_homologs build_non_ref build_utils
 
 build : clean bindir $(TARGETS)
 	@echo '=== Build complete ==='
@@ -28,6 +28,10 @@ build_homologs :
 build_utils :
 	@echo ---$@---
 	cd utils; make
+
+build_non_ref :
+	@echo ---$@---
+	cd non_ref; make
 
 clean :
 	@echo ---$@---

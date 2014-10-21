@@ -24,6 +24,8 @@ MAKER=/srv/gs1/projects/cherry/apps/maker/bin
 SNAP=/srv/gs1/projects/cherry/apps/SNAP/snap
 GeneMark=/srv/gs1/projects/cherry/apps/GeneMark_S/genemark_suite_linux_64/gmsuite/gmsn.pl
 genemark_mod=/srv/gs1/projects/cherry/giltae/strains/GeneMark_model/GeneMark_hmm.mod 
-
+BWA=/srv/gs1/projects/cherry/apps/bwa-0.6.2
+SAMTOOLS=/srv/gs1/projects/cherry/apps/samtools-0.1.18
+BEDTOOLS=/srv/gs1/projects/cherry/apps/BEDTools/BEDTools-Version-2.16.2/bin
 
 BIN=$AGAPE_DIR/bin

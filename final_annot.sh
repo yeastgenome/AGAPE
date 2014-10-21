@@ -1,9 +1,12 @@
 #!/bin/sh -l
 
-gff_file=$1
-out_dir=$2
-strain_name=$3
-SCRIPTS=$4
+fasta_file=$1
+gff_file=$2
+out_dir=$3
+strain_name=$4
+SCRIPTS=$5
+
+. $SCRIPTS/configs.cf
 
 mkdir -p $out_dir/temp
 temp_dir=$out_dir/temp
@@ -19,7 +22,7 @@ do
   if [ $scf_len -gt 300 ]
 	then
 		less $gff_file | grep -w 'gene' | awk -v SCF=${scf_name} '{if ($1 == SCF) print $0}' > $temp_dir/temp.genes.gff
-		$SCRIPTS/merge_gff $out_dir/temp.codex $temp_dir/temp.genes.gff >> $temp_dir/final.genes.gff
+		$BIN/merge_gff $out_dir/temp.codex $temp_dir/temp.genes.gff >> $temp_dir/final.genes.gff
 	fi
 done < $out_dir/scf.list
 

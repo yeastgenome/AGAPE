@@ -11,7 +11,7 @@ MIN_PAIRS=5
 MINA_NUM=95
 K_MER=41
 
-temp_dir=$cur_dir/temp_assem_$seq_name
+temp_dir=$cur_dir/"$seq_name"_assembly
 mkdir -p $temp_dir
 
 if [ ! -e "$ABYSS/abyss-pe" ]
@@ -32,7 +32,7 @@ then
 	fname1=$cur_dir/"$seq_name"_1.se.fastq
 	lname1=$cur_dir/seq1.fastq
 	ln -s $fname1 $lname1
-	$ABYSS/abyss-pe aligner=map k=$K_MER name=$seq_name se='seq_se1.fastq'
+	$ABYSS/abyss-pe aligner=map k=$K_MER name=$seq_name se='seq1.fastq'
 elif [ $mode == 2 ]
 then
 	fname1=$cur_dir/"$seq_name"_1.pe.fastq
@@ -48,6 +48,21 @@ then
 	ln -s $fname3 $lname3
 	ln -s $fname4 $lname4
 	$ABYSS/abyss-pe aligner=map k=$K_MER name=$seq_name lib='pe1' pe1='seq1.fastq seq2.fastq' se='seq_se1.fastq seq_se2.fastq'
+elif [ $mode == 3 ] ## for unmapped reads
+then
+	fname1=$cur_dir/all_unmapped_reads1.fastq
+	lname1=$temp_dir/seq1.fastq
+	ln -s $fname1 $lname1
+	$ABYSS/abyss-pe aligner=map k=$K_MER name=$seq_name se='seq1.fastq'
+elif [ $mode == 4 ] ## for unmapped reads
+then
+	fname1=$cur_dir/all_unmapped_reads1.fastq
+	fname2=$cur_dir/all_unmapped_reads2.fastq
+	lname1=$temp_dir/seq1.fastq
+	lname2=$temp_dir/seq2.fastq
+	ln -s $fname1 $lname1
+	ln -s $fname2 $lname2
+	$ABYSS/abyss-pe aligner=map k=$K_MER name=$seq_name lib='pe1' pe1='seq1.fastq seq2.fastq'
 else
 	echo "$mode : unsupported mode (should be 0 or 1)"
 	exit 1
@@ -67,4 +82,4 @@ cp $seq_name-contigs.fa $cur_dir/$seq_name.ctg.fasta
 cp $seq_name.scf.fasta $cur_dir/
 
 cd $cur_dir
-rm -rf $temp_dir
+#rm -rf $temp_dir

@@ -1,66 +1,29 @@
-INSTALLATION
+AGAPE Usage
 
-Go to the main directory of the AGAPE package, and type "cd src" and "make".
+Data Preparation
 
-Install prerequisite programs as follows
-(A) Assembly
+For a raw sequence in FASTQ,
 
-1. ABYSS (http://www.bcgsc.ca/platform/bioinfo/software/abyss)
-	- add "bin" directory of ABYSS to your $PATH 
-(e.g. if ABYSS bin directory is located in /home/gsong/AGAPE/programs/abyss-1.5.2/bin,
-then edit line "export PATH=$PATH" to "PATH=/home/gsong/AGAPE/programs/abyss-1.5.2/bin:$PATH" in .bash_profile and reload it by running "source .bash_profile)
-	- edit $ABYSS path in configs.cf file /home/AGAPE/programs/abyss-1.5.2/bin
+1. Place the reference sequence file in FASTA and annotations in GFF in directory "reference" of the package directory (see file yeast.fasta and yeast.gff for file format)
 
-2. SGA (https://github.com/jts/sga)
-	- download SGA (e.g. typing 'wget https://github.com/jts/sga/archive/master.zipi') 
-	- SGA dependencies (google sparse library, bamtools library, and zlib)
-	- ./autogen.sh 
-	- ./configure --with-sparsehash=/home/gsong/sparsehash --with-bamtools=/home/gsong/bamtools --prefix=/home/gsong/AGAPE/programs/SGA  (note bamtools should be later version than bamtools.2.3.0)
-	- set PATH=/home/gsong/SGA/bin:$PATH
-	- edit $SGA and $SGA_src paths in configs.cf
+2. Save the expressed sequencing tags (EST) and protein datasets for the reference in directory "cfg_files" of the package directory (see yeast_est.fasta and yeast_protein.fasta) and change the path of each file in configuration file "configs.cf" of the pacakge directory (REF_NAME, PROTEIN1, EST1, PROTEIN2, EST2, REF_DIR, REF_FASTA, and REF_GFF)
 
-(B) Annotation
+3. Creat a subdirectory in the package directory. 
 
-1. Reference genome sequence in FASTA and its annotations in GFF. If the reference genome and annotations are not available, place a sequence and annotations that are closest to your sequences  
-	- put the reference sequence to directory "reference" in the AGAPE main
-	  directory
-	- specify the reference sequence file in $REF_FASTA and the reference
-	  annotation in $REF_GFF in the configs.cf file
+4. Type "run_AGAPE_per_seq.sh Output_directory Output_prefix Fastq1 (or Fastq2)" to run all steps of the pipeline at once for assembly, annotation, and identification of novel genesi (note put the "full path" for the Fastq files). 
 
-2. Protein sequence database and EST sequence database for MAKER
-	- store protein and EST database files in FASTA format in cfg_files  
-	- specify the two files names as $PROTEIN1 and $EST1 in configs.cf
-	- default is yeast_protein.fasta and yeast_est.fasta in cfg_files
-	- store another larger set of protein and EST database files than $PROTEIN1 and $EST1 and specify the larger files as $PROTEIN2 and $EST2 in configs.cf
+5. If you wish to run each step of the pipeline individually, do as follows.
+	1) Assembly
+	- type $(AGAPE_DIR)/agape_assembly.sh Output_directory Output_prefix AGAPE_directory Sequence_file1 (Sequence_file2 for paired-end)
+	- output assembly file is saved in $(Output_directory)/$(Output_prefix).scf.fasta
+	- Sequence_file1 and Sequence_file2 should include the full path of the file
 
-3. NCBI-BLAST command line package (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
-	- BLAST depedency (boost library)
-	- ./configure --with-boost=/home/gsong/boost --prefix=/home/gsong/AGAPE/programs/BLAST
-	- type 'make'
-	- type 'make install'
-	- edit $BLAST path to '/home/gsong/programs/BLAST/bin' in configs.cf
+	2) Annotation
+	- type $(AGAPE_DIR)/agape_annot.sh Output_directory Output_prefix Assembly_FASTA_file AGAPE_directory
+	- output annotation file is saved as
+	  $(Output_directory)/comb_annot/$(Output_prefix).gff
 
-4. ChainNet
-	- Download executable program called 'axtChainNet.zip' in http://hgwdev.cse.ucsc.edu/~kent/exe/
-	- put the ChainNet executable files to /home/gsong/AGAPE/programs/axtChainNet	
-	- check $axtChainNet path in configs.cf
 
-5. Augustus (http://augustus.gobics.de)
-	- set $AUGUSTUS path in configs.cf
-	- set $AUGUSTUS_REF: the reference genome used for the AUGUSTUS annotation
-	  (see SPECIES.list file and pick the closest species of your genome
-sequences)
-
-6. preparing for files of the reference required to run the annotation steps
-	- run $(AGAPE_DIR)/prep.sh $(AGAPE_DIR)
-
-7. MAKER
-	1) maker_exe.ctl
-	- edit the path of all executable programs that ar required for running
-	  MAKER 
-
-6. LASTZ (included in the pipeline)
-
-(C) Variation calling
-
-1. HUGESEQ
+	3) Identification of novel genes
+	- type $(AGAPE_DIR)/agape_novel_genes.sh Output_directory Output_prefix AGAPE_directory Assembly_FASTA_file Annotation_GFF_file Fastq1 (or Fastq2 for paired end)
+	- results file in GFF is $(Output_directory)/non_ref/$(Output_prefix).orfs.gff

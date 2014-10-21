@@ -630,13 +630,13 @@ int input_genes_in_gff(FILE *f, struct g_list *genes, struct exons_list *exons)
   }
 
 	if( (num_genes > 0) && (cur_exons_count == 0) ) {
-		if( strcmp(cur_gname, cds_gname) == 0 ) {
+//		if( strcmp(cur_gname, cds_gname) == 0 ) {
 			genes[i].cdsStart = j;
 			exons[j].fid = i;
 			exons[j].reg = assign_I(old_b, old_e);
 			cur_exons_count++;
 			j++;
-		}
+//		}
 	} 
 	
 	if( i >= 0 ) {

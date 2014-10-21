@@ -58,9 +58,6 @@ ln -s $cur_dir/$seq_name.scf.fasta $annot_dir/$seq_name.fasta
 $SCRIPTS/ChainNet.sh $axtChainNet $seq_name $annot_dir $REF_DIR/chr_seq $REF_NAME $annot_dir/$seq_name.fasta $BIN #three result directories lav, chain, and net in $annot_dir/$REF_NAME.chain.net
 $SCRIPTS/intervals.sh $seq_name $annot_dir $REF_DIR $REF_NAME $annot_dir/$REF_NAME.chain.net $BIN #$REF_DIR/intervals are created
 
-mv $annot_dir $cur_dir/old.annot
-mkdir -p $annot_dir
-
 rm -rf $annot_dir/$seq_name.codex
 while read line
 do
