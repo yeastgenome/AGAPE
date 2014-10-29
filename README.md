@@ -1,11 +1,8 @@
 AGAPE
 =====
 
-<<<<<<< HEAD
+
 AGAPE (Automated Genome Analysis PipelinE) for yeast pan-genome analysis is designed to automate the process of pan-genome analysis and encompasses assembly, annotation, and variation-calling steps. It also includes programs for integrative analysis of novel genes.
-=======
-AGAPE (Automated Genome Analysis PipelinE) for yeast pan-genome analysis is designed to automate the process of pan-genome analysis and encompasses assembly, annotation, and variation-calling steps. It also includes programs for integrative analysis of novel genes. 
->>>>>>> origin/master
 
 -- INSTALLATION --
 
