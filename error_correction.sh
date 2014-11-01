@@ -72,10 +72,10 @@ then
 		fi
 	fi
 else
-	$BIN/edit_fq_head $seqdir/"$seq_name"_1.fastq 1 > $fname1 # SGA and ABYSS require that header
+	$BIN/edit_fq_head $seq1 1 > $fname1 # SGA and ABYSS require that header
 	if [ $mode == 2 ]
 	then
-		$BIN/edit_fq_head $seqdir/"$seq_name"_2.fastq 2 > $fname2
+		$BIN/edit_fq_head $seq2 2 > $fname2
 	fi
 fi
 
