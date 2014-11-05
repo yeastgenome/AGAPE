@@ -16,9 +16,11 @@ seq1=$3
 if [ $# == 3 ]
 then
 	$SCRIPTS/agape_assembly.sh $out_dir $out_name $SCRIPTS $seq1
+	mode=1
 elif [ $# == 4 ]
 then
 	seq2=$4
+	mode=2
 	$SCRIPTS/agape_assembly.sh $out_dir $out_name $SCRIPTS $seq1 $seq2
 fi
 

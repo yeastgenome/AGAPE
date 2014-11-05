@@ -10,22 +10,22 @@ SCRIPTS=$7
 
 . $SCRIPTS/configs.cf
 
-#cd $comb_annot
-#rm -rf $comb_annot/ref.*
-#ln -s $PROTEIN1 $comb_annot/ref1_protein.fasta
-#BLAST/makeblastdb -in ref1_protein.fasta -dbtype prot -parse_seqids -out ref
-#SCRIPTS/combined_annot.sh $out_name $comb_annot $maker_dir/seq.fasta $out_dir/annot $maker_dir $snap_dir $SCRIPTS SGD 90 # results in $comb_annot/gff/$out_name.genes.gff
+cd $comb_annot
+rm -rf $comb_annot/ref.*
+ln -s $PROTEIN1 $comb_annot/ref1_protein.fasta
+$BLAST/makeblastdb -in ref1_protein.fasta -dbtype prot -parse_seqids -out ref
+$SCRIPTS/combined_annot.sh $out_name $comb_annot $maker_dir/seq.fasta $out_dir/annot $maker_dir $snap_dir $SCRIPTS SGD 90 # results in $comb_annot/gff/$out_name.genes.gff
 
-#rm -rf $comb_annot/ref.*
-#ln -s $PROTEIN2 $comb_annot/ref_protein.fasta
-#ln -s $EST2 $comb_annot/ref_est.fasta
-#ln -s $REPEAT_PROTEIN $comb_annot/te_protein.fasta
-#ln -s $CFG_DIR/maker_opts.ctl $comb_annot/maker_opts.ctl
-#ln -s $CFG_DIR/maker_bopts.ctl $comb_annot/maker_bopts.ctl
-#ln -s $CFG_DIR/maker_exe.ctl $comb_annot/maker_exe.ctl
+rm -rf $comb_annot/ref.*
+ln -s $PROTEIN2 $comb_annot/ref_protein.fasta
+ln -s $EST2 $comb_annot/ref_est.fasta
+ln -s $REPEAT_PROTEIN $comb_annot/te_protein.fasta
+ln -s $CFG_DIR/maker_opts.ctl $comb_annot/maker_opts.ctl
+ln -s $CFG_DIR/maker_bopts.ctl $comb_annot/maker_bopts.ctl
+ln -s $CFG_DIR/maker_exe.ctl $comb_annot/maker_exe.ctl
 
-#BLAST/makeblastdb -in ref_protein.fasta -dbtype prot -parse_seqids -out ref
-#SCRIPTS/unannot_regions.sh $maker_dir/seq.fasta $comb_annot/gff/$out_name.genes.gff $comb_annot $SCRIPTS # resutls in $comb_annot/non_orf.fasta
+$BLAST/makeblastdb -in ref_protein.fasta -dbtype prot -parse_seqids -out ref
+$SCRIPTS/unannot_regions.sh $maker_dir/seq.fasta $comb_annot/gff/$out_name.genes.gff $comb_annot $SCRIPTS # resutls in $comb_annot/non_orf.fasta
 rm $comb_annot/seq.fasta
 ln -s $comb_annot/non_orf.fasta $comb_annot/seq.fasta
 $SCRIPTS/maker.sh $comb_annot $snap_dir $SCRIPTS # results in $comb_annot/genes.gff
