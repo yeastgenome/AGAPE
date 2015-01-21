@@ -9,6 +9,7 @@ snap_dir=$6
 SCRIPTS=$7
 protein_file_type=$8 # SGD or ENSEMBL
 cutoff=$9 
+blast_db_dir=${10}
 
 . $SCRIPTS/configs.cf
 
@@ -61,7 +62,7 @@ do
 		if [ $num_len -gt 0 ]
 		then
 			$BIN/pull_c $temp_dir/temp.fasta $temp_dir/temp.all.codex > $temp_dir/temp.dna
-      cd $out_dir
+      cd $blast_db_dir
       $BLAST/blastx -db ref -query $temp_dir/temp.dna -outfmt "7 sallacc pident evalue stitle" -out $temp_dir/temp.blastx.out
       cd $temp_dir
 		  $BIN/update_gff_blastx $temp_dir/temp.all.gff $temp_dir/temp.blastx.out $protein_file_type $cutoff > $temp_dir/temp.all.genes.gff

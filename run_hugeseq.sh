@@ -1,13 +1,18 @@
 #!/bin/sh -l
 
-seq_dir=/srv/gs1/projects/cherry/giltae/pan_genome/fastq
-out_dir=/srv/gs1/projects/cherry/giltae/strains/hugeseq
-list=/srv/gs1/projects/cherry/giltae/duke/hugeseq_rerun1.list
+#seq_dir=/srv/gs1/projects/cherry/giltae/pan_genome/fastq
+seq_dir=/srv/gs1/projects/cherry/giltae/strains/validation/fastq
+#out_dir=/srv/gs1/projects/cherry/giltae/strains/hugeseq
+out_dir=/srv/gs1/projects/cherry/giltae/AGAPE/hugeseq
+#list=/srv/gs1/projects/cherry/giltae/duke/hugeseq_rerun1.list
+list=/srv/gs1/projects/cherry/giltae/strains/validation/fastq/liti_sc_list.txt
 
 while read line
 do
-
-	cur_name=`echo $line | awk '{print $1}'`
+	file_name=`echo $line | awk '{print $1}'`
+	cur_name=`echo $line | awk '{print $2}'`
+	ln -s $seq_dir/"$file_name"_1.fastq $seq_dir/"$cur_name"_1.fastq
+	ln -s $seq_dir/"$file_name"_2.fastq $seq_dir/"$cur_name"_2.fastq
 	mkdir -p $out_dir/$cur_name
 	cd $out_dir/$cur_name
 	rm -rf $out_dir/$cur_name/*

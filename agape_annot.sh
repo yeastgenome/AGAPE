@@ -3,13 +3,13 @@
 # --- input file in $out_dir/$out_name.scf.fasta ---
 
 #SCRIPTS=/srv/gs1/projects/cherry/giltae/AGAPE # AGAPE main directory path
-SCRIPT=`echo $0 | sed -e 's;.*/;;'` # script name from command line; path removed for msgs
+#SCRIPT=`echo $0 | sed -e 's;.*/;;'` # script name from command line; path removed for msgs
 
 #fastq_dir=/srv/gs1/projects/cherry/giltae/AGAPE/output/fastq
 
 if [ $# -ne 4 ]
 then
-  echo "Usage: $SCRIPT output_directory output_name sequence_fasta_file AGAPE_main_path"
+  echo "Usage: agape_annot.sh output_directory output_name sequence_fasta_file AGAPE_main_path"
   exit 1
 fi
 
@@ -28,8 +28,8 @@ else
 	then
 		ln -s $seq $out_dir/$out_name.scf.fasta
 	fi
-  $SCRIPTS/homology_annot.sh $out_dir $out_name $SCRIPTS # results place in $out_dir/annot/$out_name.codex
-fi
+ 	$SCRIPTS/homology_annot.sh $out_dir $out_name $SCRIPTS # results place in $out_dir/annot/$out_name.codex
+#fi
 
 snap_dir=$out_dir/snap_files
 mkdir -p $snap_dir
