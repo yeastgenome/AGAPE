@@ -13,4 +13,5 @@ Read "INSTALL.txt" file in the package
 Read "README.txt" file in the package
 
 Reference
+=========
 Song G, Dickins B, Demeter J, Engel S, Dunn B, Cherry J (2015) AGAPE (Automated Genome Analysis PipelinE) for pan-genome analysis of Saccharomyces cerevisiae. PLoS ONE, In press.
