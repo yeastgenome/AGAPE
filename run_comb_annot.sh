@@ -32,6 +32,7 @@ $SCRIPTS/maker.sh $comb_annot $snap_dir $SCRIPTS # results in $comb_annot/genes.
 less $comb_annot/non_orf.fasta | grep ">" > $comb_annot/head.txt
 mv $comb_annot/genes.gff $comb_annot/add1.genes.gff
 $BIN/conv_scf_pos $comb_annot/head.txt $comb_annot/add1.genes.gff > $comb_annot/genes.gff
+#$BIN/conv_scf_head /home/sj/Desktop/GCA_000766165.2_ASM76616v2_genomic.fna > $comb_annot/$out_name.scf.fasta
 
 echo "#" > $comb_annot/$out_name.codex
 mkdir -p $comb_annot/more_annot
@@ -44,10 +45,14 @@ rm -rf $comb_annot/seq.fasta
 rm -rf $comb_annot/non_orf.fasta
 rm -rf $comb_annot/genes.gff
 $SCRIPTS/unannot_regions.sh $maker_dir/seq.fasta $comb_annot/gff/$out_name.genes.gff $comb_annot $SCRIPTS # resutls in $comb_annot/non_orf.fasta
-$GeneMark  --format=GFF --imod $genemark_mod $comb_annot/non_orf.fasta
-less $comb_annot/non_orf.fasta.gff | sed '/^#/ d' | sed '/^$/d' | awk '{print $1" maker gene "$5" "$6" . "$8" . UNDEF"}' > $comb_annot/genes.gff
+
+$AUGUSTUS/augustus --gff3=on --species=$AUGUSTUS_REF non_orf.fasta > $comb_annot/genes.gff
+less $comb_annot/genes.gff | sed '/^#/d' | sed '/^$/d' | grep -P "gene|CDS" > $comb_annot/temp.gff
+mv $comb_annot/temp.gff $comb_annot/add2.genes.gff
+
+#$GeneMark  --format=GFF --imod $genemark_mod $comb_annot/non_orf.fasta
+#less $comb_annot/non_orf.fasta.gff | sed '/^#/ d' | sed '/^$/d' | awk '{print $1" maker gene "$5" "$6" . "$8" . UNDEF"}' > $comb_annot/genes.gff
 less $comb_annot/non_orf.fasta | grep ">" > $comb_annot/head.txt
-mv $comb_annot/genes.gff $comb_annot/add2.genes.gff
 $BIN/conv_scf_pos $comb_annot/head.txt $comb_annot/add2.genes.gff > $comb_annot/genes.gff
 
 echo "#" > $comb_annot/$out_name.codex
