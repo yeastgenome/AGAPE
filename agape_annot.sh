@@ -29,7 +29,7 @@ else
 		ln -s $seq $out_dir/$out_name.scf.fasta
 	fi
  	$SCRIPTS/homology_annot.sh $out_dir $out_name $SCRIPTS # results place in $out_dir/annot/$out_name.codex
-#fi
+fi
 
 snap_dir=$out_dir/snap_files
 mkdir -p $snap_dir
