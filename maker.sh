@@ -15,7 +15,7 @@ rm -rf $cur_dir/genome.hmm
 cp $CFG_DIR/maker_opts.ctl $CFG_DIR/maker_bopts.ctl $CFG_DIR/maker_exe.ctl $cur_dir
 
 $SNAP/hmm-assembler.pl $cur_dir/seq.fasta $snap_dir/params > $cur_dir/genome.hmm
-$MAKER/maker
+$MAKER/maker -fix_nucleotides -f # -c 8 
 $MAKER/gff3_merge -d $cur_dir/seq.maker.output/seq_master_datastore_index.log -o $cur_dir/seq.gff
 less $cur_dir/seq.gff | grep repeat > $cur_dir/repeats.gff
 less $cur_dir/seq.gff | grep gene > $cur_dir/genes.gff
