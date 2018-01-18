@@ -52,7 +52,7 @@ do
 				count=`less "$annot_dir"/homologs.d/fasta/"$chr_name".homologs.fasta | grep -w "$scaf_name" | wc -l`
 			fi
 
-			if [ $count == 0 ]
+			if [ $count -eq 0 ]
 			then	
 				echo "> $scaf_name" >> $annot_dir/homologs.d/fasta/$chr_name.homologs.fasta
 				$BIN/dna $temp_dir/cur_scaf | tail -n +2 >> $annot_dir/homologs.d/fasta/$chr_name.homologs.fasta	
